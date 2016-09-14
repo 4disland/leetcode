@@ -9,9 +9,14 @@ class Solution(object):
         from collections import Counter
         from functools import reduce
         c1, c2 = Counter(nums1), Counter(nums2)
+
+        # method 1
         inter = c1 & c2
         if not inter:
             return []
         return reduce(lambda x,y: x+y, [[k]*inter[k] for k in inter])
+
+        # method 2
+        return list(inter.elements())
 
 print(Solution().intersect([1,2,2,1], [2,2]))
