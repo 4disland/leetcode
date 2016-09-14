@@ -4,12 +4,19 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        def to_digits(c):
-            return ord(c.upper())-ord('A')+1
-        base = 1
-        ret = 0
-        for i,c in enumerate(reversed(s)):
-            ret += base*to_digits(c)
-            base *= 26
+        # method 1
+        # def to_digits(c):
+        #     return ord(c.upper())-ord('A')+1
+        # base = 1
+        # ret = 0
+        # for i,c in enumerate(reversed(s)):
+        #     ret += base*to_digits(c)
+        #     base *= 26
+        # return ret
 
-        return ret
+        # method 2
+        from functools import reduce
+        return reduce(lambda x,y: x*26+y, map(lambda x:ord(x)-64, s))
+
+print(Solution().titleToNumber('AA'))
+        
